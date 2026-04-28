@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عالية القرآن | Aliyat Al-Quran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;800&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C9A84C;--gold-l:#E8C97A;--gold-d:#8B6914;--gold-shine:#F5DFA0;
+  --black:#090800;--dark:#111008;--dark2:#1A1500;--dark3:#221E08;
+  --beige:#F5EDD6;--beige2:#EFE3C2;--cream:#FAF5E8;
+  --muted:#8A7A5A;--border-g:rgba(201,168,76,.28);
+  --r-sm:10px;--r-md:14px;--r-lg:18px;--r-xl:24px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Tajawal',sans-serif;background:var(--black);color:var(--beige);overflow-x:hidden}
+body.ltr{font-family:'EB Garamond','Tajawal',sans-serif;direction:ltr;text-align:left}
+body.rtl{font-family:'Tajawal',sans-serif;direction:rtl;text-align:right}
+
+/* ── LANG: default AR visible, EN hidden ── */
+.ar{display:block}.en{display:none}
+.ar-i{display:inline}.en-i{display:none}
+body.ltr .ar{display:none}body.ltr .en{display:block}
+body.ltr .ar-i{display:none}body.ltr .en-i{display:inline}
+
+/* ── URGENCY (TOP, no overlap) ── */
+.urgency{background:linear-gradient(135deg,var(--gold-d),var(--gold),var(--gold-d));padding:14px 20px;text-align:center}
+.urgency p{color:#0A0800;font-weight:700;font-size:clamp(12px,2vw,14px)}
+.urgency strong{font-weight:900;text-decoration:underline}
+
+/* ── LANG BAR (below urgency, sticky) ── */
+.lang-bar{position:sticky;top:0;z-index:999;display:flex;justify-content:flex-end;align-items:center;padding:8px 20px;background:rgba(10,8,0,.97);border-bottom:1px solid var(--border-g);gap:8px;backdrop-filter:blur(10px)}
+.lang-btn{background:transparent;border:1px solid var(--border-g);border-radius:100px;padding:5px 18px;font-size:12px;font-weight:600;cursor:pointer;letter-spacing:1px;color:var(--beige);transition:all .3s;font-family:inherit}
+.lang-btn.active{background:linear-gradient(135deg,var(--gold-l),var(--gold));color:#0A0800;border-color:var(--gold)}
+.lang-btn:hover:not(.active){border-color:var(--gold);color:var(--gold)}
+
+/* ── COUNTDOWN BAR ── */
+.cdown-bar{background:linear-gradient(135deg,#1a0a00,#2a1500,#1a0a00);border-bottom:1px solid var(--border-g);padding:12px 20px;text-align:center}
+.cdown-inner{display:flex;align-items:center;justify-content:center;gap:clamp(10px,3vw,24px);flex-wrap:wrap}
+.cdown-label{font-size:12px;color:var(--gold-l);letter-spacing:2px;font-weight:600}
+.cdown-units{display:flex;gap:8px;align-items:center}
+.cdown-box{background:rgba(201,168,76,.12);border:1px solid var(--border-g);border-radius:8px;padding:6px 10px;text-align:center;min-width:44px}
+.cdown-num{font-family:'Amiri',serif;font-size:22px;font-weight:700;color:var(--gold);display:block;line-height:1}
+.cdown-unit{font-size:9px;color:var(--muted);letter-spacing:1px;display:block;margin-top:2px}
+.cdown-sep{color:var(--gold);font-size:20px;font-weight:700;line-height:1}
+.seats-badge{background:rgba(220,30,30,.18);border:1px solid rgba(220,30,30,.4);border-radius:100px;padding:5px 16px;font-size:12px;font-weight:700;color:#ff6b6b}
+
+/* ── HERO ── */
+.hero{min-height:100svh;background:radial-gradient(ellipse 80% 60% at 50% 20%,#1F1600,#0D0A00 50%,var(--black));position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 20px 60px;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C9A84C' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.gold-bar{position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,transparent,var(--gold-d) 20%,var(--gold) 50%,var(--gold-d) 80%,transparent)}
+.gold-bar-b{position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,transparent,var(--gold-d) 20%,var(--gold) 50%,var(--gold-d) 80%,transparent)}
+
+@keyframes shimmer{0%{background-position:0% center}100%{background-position:200% center}}
+@keyframes fd{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
+
+.center-name{font-family:'Amiri',serif;font-size:clamp(38px,8vw,88px);font-weight:700;background:linear-gradient(135deg,var(--gold-shine),var(--gold-l),var(--gold),var(--gold-d),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200%;animation:shimmer 4s linear infinite;letter-spacing:4px;line-height:1.2;display:block}
+body.ltr .center-name{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,62px);letter-spacing:6px}
+
+.hero-tasmiyya{font-family:'Amiri Quran',serif;font-size:clamp(22px,4vw,42px);color:var(--gold-l);letter-spacing:6px;margin-bottom:18px;opacity:.85;animation:fd .9s ease both}
+body.ltr .hero-tasmiyya{font-family:'Cinzel',serif;font-size:clamp(13px,2vw,20px);letter-spacing:8px;color:var(--muted)}
+.hero-badge{display:inline-flex;align-items:center;background:rgba(201,168,76,.1);border:1px solid var(--border-g);border-radius:100px;padding:7px 22px;font-size:12px;font-weight:600;color:var(--gold-l);letter-spacing:1.5px;margin-bottom:26px;animation:fd .9s .1s ease both}
+.hero-title{font-family:'Amiri',serif;font-size:clamp(30px,5.5vw,64px);font-weight:700;color:var(--beige);line-height:1.25;margin-bottom:10px;animation:fd .9s .2s ease both}
+body.ltr .hero-title{font-family:'Cinzel',serif;font-size:clamp(22px,4vw,50px)}
+.hero-title .g{color:var(--gold)}
+.hero-sub{font-size:clamp(14px,2vw,19px);color:var(--beige2);opacity:.8;font-weight:300;animation:fd .9s .3s ease both;max-width:600px}
+.hdiv{width:100px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:26px auto}
+.hero-stats{display:flex;gap:clamp(16px,4vw,48px);justify-content:center;flex-wrap:wrap;margin-bottom:44px;animation:fd .9s .45s ease both}
+.stat{text-align:center}
+.stat-n{font-family:'Amiri',serif;font-size:clamp(26px,4vw,46px);font-weight:700;color:var(--gold);display:block;line-height:1}
+body.ltr .stat-n{font-family:'Cinzel',serif}
+.stat-l{font-size:11px;color:var(--muted);margin-top:5px;display:block}
+.sdiv{width:1px;background:var(--border-g);align-self:stretch;min-height:44px}
+
+.cta-p{display:inline-block;background:linear-gradient(135deg,var(--gold-l),var(--gold),var(--gold-d));color:#0A0800;font-family:'Tajawal',sans-serif;font-size:clamp(15px,2vw,18px);font-weight:800;padding:clamp(14px,2vw,18px) clamp(32px,5vw,56px);border-radius:100px;letter-spacing:.5px;box-shadow:0 8px 40px rgba(201,168,76,.45);transition:all .3s;cursor:pointer;border:none;position:relative;overflow:hidden;animation:fd .9s .55s ease both}
+body.ltr .cta-p{font-family:'EB Garamond',serif;font-weight:600;letter-spacing:2px}
+.cta-p::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transition:left .5s}
+.cta-p:hover::before{left:100%}
+.cta-p:hover{transform:translateY(-2px);box-shadow:0 14px 50px rgba(201,168,76,.65)}
+.hero-note{margin-top:18px;font-size:12px;color:var(--muted);animation:fd .9s .65s ease both}
+.hero-note span{color:var(--gold)}
+
+/* ── SECTIONS ── */
+.gl{width:70px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:14px auto 44px}
+.slabel{font-size:11px;font-weight:600;letter-spacing:3px;color:var(--gold);text-align:center;margin-bottom:10px;text-transform:uppercase}
+.stitle{font-family:'Amiri',serif;font-size:clamp(26px,4.5vw,46px);font-weight:700;text-align:center;color:var(--beige);margin-bottom:12px;line-height:1.3}
+body.ltr .stitle{font-family:'Cinzel',serif;font-size:clamp(22px,3.5vw,40px)}
+.stitle span{color:var(--gold)}
+.sec{padding:clamp(60px,8vw,100px) clamp(16px,5vw,40px);max-width:1100px;margin:0 auto}
+.sec-full{padding:clamp(60px,8vw,100px) 0;background:linear-gradient(160deg,#0F0C00,#1A1400,#0F0C00);border-top:1px solid var(--border-g);border-bottom:1px solid var(--border-g)}
+.sec-full .inner{max-width:1100px;margin:0 auto;padding:0 clamp(16px,5vw,40px)}
+
+/* ── PRICING – strike + offer ── */
+.price-old{font-size:clamp(18px,3vw,26px);color:var(--muted);text-decoration:line-through;margin-bottom:4px;display:block}
+.price-save{display:inline-block;background:rgba(220,30,30,.2);border:1px solid rgba(220,30,30,.4);border-radius:100px;padding:4px 14px;font-size:12px;font-weight:700;color:#ff8080;margin-bottom:8px}
+.price-card{max-width:560px;margin:0 auto;background:linear-gradient(160deg,#1E1800,#110F00);border:1px solid var(--gold);border-radius:var(--r-xl);padding:clamp(36px,5vw,52px) clamp(24px,5vw,44px);text-align:center;position:relative;overflow:hidden;box-shadow:0 0 60px rgba(201,168,76,.16),inset 0 1px 0 rgba(255,255,255,.04)}
+.price-card::before{content:'';position:absolute;top:-40%;left:-40%;width:180%;height:180%;background:radial-gradient(ellipse at center,rgba(201,168,76,.07),transparent 60%);pointer-events:none}
+.p-top-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold-l),var(--gold));color:#0A0800;font-size:11px;font-weight:800;padding:6px 22px;border-radius:0 0 12px 12px;letter-spacing:1px;white-space:nowrap}
+.p-price{margin:24px 0 4px}
+.p-currency{font-size:26px;color:var(--gold);vertical-align:top;margin-top:10px;display:inline-block}
+.p-amount{font-family:'Amiri',serif;font-size:clamp(60px,10vw,84px);font-weight:700;color:var(--gold-l);line-height:1}
+body.ltr .p-amount{font-family:'Cinzel',serif;font-size:clamp(50px,8vw,72px)}
+.p-period{font-size:13px;color:var(--muted);margin-bottom:28px}
+.p-list{list-style:none;text-align:inherit;margin-bottom:32px}
+.p-list li{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(201,168,76,.1);font-size:14px;color:var(--beige2)}
+.p-list li:last-child{border-bottom:none}
+.chk{width:22px;height:22px;min-width:22px;background:linear-gradient(135deg,var(--gold),var(--gold-d));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#0A0800;font-weight:900;flex-shrink:0}
+.refund{font-size:11px;color:var(--muted);margin-top:14px}
+
+/* ── PAIN CARDS ── */
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.pain-card{background:rgba(201,168,76,.05);border:1px solid var(--border-g);border-radius:var(--r-md);padding:clamp(20px,3vw,28px) 20px;text-align:center;transition:all .3s}
+.pain-card:hover{background:rgba(201,168,76,.12);transform:translateY(-4px);box-shadow:0 12px 36px rgba(201,168,76,.18)}
+.pain-icon{font-size:30px;margin-bottom:12px;display:block}
+.pain-card h3{font-family:'Amiri',serif;font-size:18px;color:var(--gold-l);margin-bottom:6px}
+body.ltr .pain-card h3{font-family:'Cinzel',serif;font-size:15px}
+.pain-card p{font-size:13px;color:var(--muted);line-height:1.75}
+
+/* ── PROG CARDS ── */
+.prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.prog-card{background:var(--dark2);border:1px solid var(--border-g);border-radius:var(--r-lg);padding:clamp(24px,3vw,32px) clamp(20px,3vw,28px);position:relative;overflow:hidden;transition:all .3s}
+.prog-card::after{content:'';position:absolute;top:0;right:0;width:80px;height:80px;background:radial-gradient(circle,rgba(201,168,76,.15),transparent);pointer-events:none}
+.prog-card:hover{border-color:var(--gold);box-shadow:0 8px 36px rgba(201,168,76,.22);transform:translateY(-2px)}
+.prog-hrs{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#0A0800;font-size:10px;font-weight:800;padding:4px 14px;border-radius:100px;margin-bottom:14px;letter-spacing:1px}
+.prog-card h3{font-family:'Amiri',serif;font-size:21px;color:var(--gold-l);margin-bottom:14px}
+body.ltr .prog-card h3{font-family:'Cinzel',serif;font-size:17px}
+.prog-list{list-style:none}
+.prog-list li{font-size:13px;color:var(--beige2);padding:5px 0;padding-inline-start:18px;position:relative;line-height:1.6}
+.prog-list li::before{content:'◆';position:absolute;inset-inline-start:0;color:var(--gold);font-size:7px;top:9px}
+
+/* ── TIMELINE ── */
+.timeline{display:flex;flex-direction:column;max-width:680px;margin:0 auto;position:relative}
+.timeline::before{content:'';position:absolute;inset-inline-end:27px;top:24px;bottom:24px;width:1px;background:linear-gradient(180deg,transparent,var(--gold) 20%,var(--gold) 80%,transparent)}
+@media(max-width:500px){.timeline::before{display:none}}
+.tl-item{display:flex;gap:20px;align-items:flex-start;padding:18px 0}
+.tl-dot{width:54px;height:54px;min-width:54px;background:linear-gradient(135deg,var(--gold-l),var(--gold-d));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Amiri',serif;font-size:15px;font-weight:700;color:#0A0800;position:relative;z-index:1;box-shadow:0 0 20px rgba(201,168,76,.4);flex-shrink:0}
+body.ltr .tl-dot{font-family:'Cinzel',serif;font-size:13px}
+.tl-content h4{font-family:'Amiri',serif;font-size:18px;color:var(--gold-l);margin-bottom:4px}
+body.ltr .tl-content h4{font-family:'Cinzel',serif;font-size:15px}
+.tl-content p{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* ── OUTCOMES ── */
+.out-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;max-width:960px;margin:0 auto}
+.out-item{text-align:center;padding:clamp(20px,3vw,28px) 16px;border:1px solid var(--border-g);border-radius:var(--r-md);background:rgba(201,168,76,.04);transition:all .3s}
+.out-item:hover{background:rgba(201,168,76,.1);transform:translateY(-4px);box-shadow:0 8px 28px rgba(201,168,76,.2)}
+.out-icon{width:50px;height:50px;background:rgba(201,168,76,.12);border:1px solid var(--border-g);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:20px}
+.out-item h4{font-family:'Amiri',serif;font-size:14px;color:var(--gold-l);line-height:1.5}
+body.ltr .out-item h4{font-family:'Cinzel',serif;font-size:12px}
+
+/* ── TEACHER BADGES ── */
+.teacher-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;max-width:880px;margin:0 auto}
+.t-badge{background:var(--dark2);border:1px solid var(--border-g);border-radius:100px;padding:12px 22px;display:flex;align-items:center;gap:10px;transition:all .3s}
+.t-badge:hover{background:rgba(201,168,76,.1);border-color:var(--gold)}
+.t-check{width:26px;height:26px;min-width:26px;background:linear-gradient(135deg,var(--gold-l),var(--gold-d));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;color:#0A0800;font-weight:900}
+.t-badge span{font-size:13px;color:var(--beige2)}
+
+/* ── VIDEO SECTION ── */
+.video-wrap{max-width:800px;margin:0 auto;border-radius:var(--r-xl);overflow:hidden;border:2px solid var(--border-g);box-shadow:0 0 60px rgba(201,168,76,.2);position:relative}
+.video-wrap video{width:100%;display:block;aspect-ratio:16/9;object-fit:cover}
+.video-overlay-badge{position:absolute;bottom:16px;inset-inline-start:16px;background:rgba(10,8,0,.85);border:1px solid var(--border-g);border-radius:100px;padding:7px 18px;font-size:12px;color:var(--gold-l);font-weight:600;backdrop-filter:blur(6px)}
+
+/* ── GALLERY ── */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;max-width:960px;margin:0 auto}
+.gal-img{border-radius:var(--r-md);overflow:hidden;border:1px solid var(--border-g);aspect-ratio:4/3;position:relative;cursor:pointer;transition:all .3s}
+.gal-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.gal-img:hover img{transform:scale(1.06)}
+.gal-img:hover{border-color:var(--gold);box-shadow:0 8px 30px rgba(201,168,76,.3)}
+.gal-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,8,0,.7),transparent 50%);display:flex;align-items:flex-end;padding:12px;opacity:0;transition:opacity .3s}
+.gal-img:hover .gal-overlay{opacity:1}
+.gal-cap{font-size:12px;color:var(--beige);font-weight:500}
+
+/* ── STUDENT TESTIMONIALS (photo+quote) ── */
+.testiph-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1000px;margin:0 auto}
+.testiph-card{background:var(--dark2);border:1px solid var(--border-g);border-radius:var(--r-lg);padding:28px 24px;display:flex;flex-direction:column;gap:18px;transition:all .3s;position:relative;overflow:hidden}
+.testiph-card::before{content:'';position:absolute;top:0;inset-inline-end:0;width:60px;height:60px;background:radial-gradient(circle,rgba(201,168,76,.15),transparent);pointer-events:none}
+.testiph-card:hover{border-color:var(--gold);box-shadow:0 8px 36px rgba(201,168,76,.18);transform:translateY(-3px)}
+.testiph-top{display:flex;align-items:center;gap:14px}
+.testiph-img{width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);flex-shrink:0}
+.testiph-info{}
+.testiph-name{font-family:'Amiri',serif;font-size:17px;color:var(--gold-l);margin-bottom:3px}
+body.ltr .testiph-name{font-family:'Cinzel',serif;font-size:14px}
+.testiph-meta{font-size:11px;color:var(--muted);letter-spacing:.5px}
+.testiph-stars{color:var(--gold);font-size:14px;letter-spacing:2px;margin-bottom:6px}
+.testiph-quote{font-size:14px;color:var(--beige2);line-height:1.8;font-style:italic;padding-inline-start:14px;border-inline-start:2px solid var(--gold);opacity:.9}
+
+/* ── GRADUATION CERTS ── */
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:900px;margin:0 auto}
+.cert-card{background:var(--dark2);border:1px solid var(--border-g);border-radius:var(--r-lg);overflow:hidden;transition:all .3s;position:relative}
+.cert-card:hover{border-color:var(--gold);box-shadow:0 8px 36px rgba(201,168,76,.25);transform:translateY(-4px)}
+.cert-img-wrap{aspect-ratio:3/4;overflow:hidden;position:relative}
+.cert-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.cert-card:hover .cert-img-wrap img{transform:scale(1.05)}
+.cert-ribbon{position:absolute;top:12px;inset-inline-start:0;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#0A0800;font-size:10px;font-weight:800;padding:5px 14px;border-radius:0 8px 8px 0;letter-spacing:1px}
+.cert-body{padding:16px 18px}
+.cert-body p{font-size:13px;color:var(--muted);line-height:1.7;font-style:italic}
+.cert-achieve{display:inline-flex;align-items:center;gap:6px;margin-top:10px;background:rgba(201,168,76,.1);border:1px solid var(--border-g);border-radius:100px;padding:4px 12px;font-size:11px;color:var(--gold-l);font-weight:600}
+
+/* ── WRITTEN TESTIMONIALS ── */
+.wtesti-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;max-width:1000px;margin:0 auto}
+.wtesti-card{background:var(--dark2);border:1px solid var(--border-g);border-radius:var(--r-lg);padding:24px 22px;position:relative;transition:all .3s}
+.wtesti-card:hover{border-color:var(--gold);box-shadow:0 6px 28px rgba(201,168,76,.16)}
+.wtesti-q{font-size:48px;color:var(--gold-d);opacity:.5;line-height:.8;font-family:'Amiri',serif;margin-bottom:8px}
+.wtesti-text{font-size:14px;color:var(--beige2);line-height:1.85;font-style:italic;margin-bottom:16px}
+.wtesti-stars{color:var(--gold);font-size:13px;margin-bottom:8px}
+.wtesti-footer{display:flex;align-items:center;gap:10px;border-top:1px solid var(--border-g);padding-top:12px}
+.wtesti-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-d));display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.wtesti-who{}
+.wtesti-role{font-size:11px;color:var(--muted)}
+.wtesti-anon{font-size:12px;color:var(--gold-l);font-weight:600}
+
+/* ── FAQ ── */
+.faq-list{max-width:680px;margin:0 auto}
+.faq-item{border:1px solid var(--border-g);border-radius:var(--r-md);margin-bottom:10px;overflow:hidden;background:var(--dark2);transition:border-color .3s}
+.faq-item:hover{border-color:rgba(201,168,76,.5)}
+.faq-item.open{border-color:var(--gold)}
+.faq-q{width:100%;padding:18px 22px;background:transparent;border:none;color:var(--beige);font-family:inherit;font-size:14px;font-weight:500;text-align:inherit;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.faq-icon{color:var(--gold);font-size:20px;flex-shrink:0;transition:transform .3s}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{display:none;padding:14px 22px 18px;font-size:13px;color:var(--muted);line-height:1.85;border-top:1px solid var(--border-g)}
+.faq-item.open .faq-a{display:block}
+
+/* ── FORM ── */
+.form-sec{background:linear-gradient(180deg,var(--black),#111008);border-top:1px solid var(--border-g);padding:clamp(60px,8vw,100px) clamp(16px,5vw,40px)}
+.form-wrap{max-width:580px;margin:0 auto;background:var(--dark2);border:1px solid var(--border-g);border-radius:var(--r-xl);padding:clamp(32px,5vw,48px) clamp(20px,5vw,40px);box-shadow:0 0 60px rgba(0,0,0,.5)}
+.form-notice{background:rgba(201,168,76,.08);border:1px solid var(--border-g);border-radius:var(--r-sm);padding:14px 18px;margin-bottom:24px;text-align:center;font-size:13px;color:var(--gold-l)}
+.fg{margin-bottom:18px}
+.fl{display:block;font-size:12px;font-weight:600;color:var(--gold-l);margin-bottom:7px;letter-spacing:.5px}
+.inp{width:100%;background:rgba(201,168,76,.06);border:1px solid var(--border-g);border-radius:var(--r-sm);padding:13px 16px;font-size:15px;font-family:inherit;color:var(--beige);outline:none;transition:all .3s}
+.inp:focus{border-color:var(--gold);background:rgba(201,168,76,.1);box-shadow:0 0 0 3px rgba(201,168,76,.15)}
+.inp::placeholder{color:var(--muted)}
+.inp option{background:#1A1500;color:var(--beige)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:480px){.form-row{grid-template-columns:1fr}}
+.submit-btn{width:100%;margin-top:8px}
+.form-fn{text-align:center;font-size:11px;color:var(--muted);margin-top:14px;line-height:1.7}
+.success-msg{display:none;background:rgba(201,168,76,.12);border:1px solid var(--gold);border-radius:var(--r-md);padding:24px;text-align:center;margin-top:20px}
+.success-msg h3{font-family:'Amiri',serif;font-size:22px;color:var(--gold);margin-bottom:8px}
+body.ltr .success-msg h3{font-family:'Cinzel',serif;font-size:18px}
+
+/* ── FOOTER ── */
+footer{background:#050500;border-top:1px solid var(--border-g);padding:clamp(36px,6vw,56px) 20px;text-align:center}
+.footer-name{font-family:'Amiri',serif;font-size:clamp(22px,4vw,34px);color:var(--gold);margin-bottom:10px}
+body.ltr .footer-name{font-family:'Cinzel',serif;font-size:clamp(18px,3vw,26px)}
+footer p{font-size:13px;color:var(--muted);line-height:1.7}
+.f-div{width:100px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:18px auto}
+
+/* ── STICKY CTA ── */
+.sticky-cta{position:fixed;bottom:clamp(14px,3vw,24px);left:50%;transform:translateX(-50%);z-index:998;opacity:0;transition:opacity .4s;pointer-events:none;width:max-content;max-width:calc(100vw - 32px)}
+.sticky-cta.vis{opacity:1;pointer-events:auto}
+.sticky-btn{background:linear-gradient(135deg,var(--gold-l),var(--gold),var(--gold-d));color:#0A0800;font-family:inherit;font-size:clamp(13px,2vw,15px);font-weight:800;padding:clamp(13px,2vw,16px) clamp(28px,4vw,44px);border-radius:100px;border:none;cursor:pointer;box-shadow:0 8px 40px rgba(201,168,76,.65);white-space:nowrap;transition:all .3s}
+.sticky-btn:hover{transform:translateY(-2px)}
+body.ltr .sticky-btn{font-family:'EB Garamond',serif;letter-spacing:1.5px}
+
+/* ── FADE IN ── */
+.fi-el{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.fi-el.vis{opacity:1;transform:translateY(0)}
+
+@media(max-width:640px){.hero-stats .sdiv{display:none}.hero-stats{gap:20px}}
+@media(max-width:380px){.hero-stats{flex-direction:column;align-items:center;gap:12px}}
+</style>
+</head>
+<body class="rtl">
+
+<!-- ①  URGENCY — top of page, always visible -->
+<div class="urgency">
+  <p class="ar">🔥 الأماكن محدودة — نسبة المعلم للطالب <strong>١ لكل ٦ طلاب فقط</strong> — سارع بالتسجيل قبل امتلاء المقاعد!</p>
+  <p class="en">🔥 Limited seats — only <strong>1 teacher per 6 students</strong> — register now before spots are filled!</p>
+</div>
+
+<!-- ②  LANG BAR — sticky just below urgency -->
+<div class="lang-bar">
+  <button class="lang-btn active" id="btn-ar" onclick="setLang('ar')">عربي</button>
+  <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
+</div>
+
+<!-- ③  COUNTDOWN BAR -->
+<div class="cdown-bar">
+  <div class="cdown-inner">
+    <span class="cdown-label ar">⏳ العرض ينتهي خلال</span>
+    <span class="cdown-label en">⏳ Offer ends in</span>
+    <div class="cdown-units">
+      <div class="cdown-box"><span class="cdown-num" id="cd-d">03</span><span class="cdown-unit ar">يوم</span><span class="cdown-unit en">Days</span></div>
+      <span class="cdown-sep">:</span>
+      <div class="cdown-box"><span class="cdown-num" id="cd-h">00</span><span class="cdown-unit ar">ساعة</span><span class="cdown-unit en">Hrs</span></div>
+      <span class="cdown-sep">:</span>
+      <div class="cdown-box"><span class="cdown-num" id="cd-m">00</span><span class="cdown-unit ar">دقيقة</span><span class="cdown-unit en">Min</span></div>
+      <span class="cdown-sep">:</span>
+      <div class="cdown-box"><span class="cdown-num" id="cd-s">00</span><span class="cdown-unit ar">ثانية</span><span class="cdown-unit en">Sec</span></div>
+    </div>
+    <div class="seats-badge ar">🔴 تبقّى ٢٠ مقعداً فقط!</div>
+    <div class="seats-badge en">🔴 Only 20 seats available!</div>
+  </div>
+</div>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="gold-bar"></div>
+  <div style="margin-bottom:22px;animation:fd .8s ease both">
+    <span class="center-name ar">عالية القرآن</span>
+    <span class="center-name en">Aliyat Al‑Quran</span>
+    <div style="height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:10px auto;max-width:320px;opacity:.5"></div>
+    <p class="ar" style="font-size:12px;letter-spacing:3px;color:var(--muted);margin-top:4px">مركز تعليمي إسلامي</p>
+    <p class="en" style="font-size:12px;letter-spacing:3px;color:var(--muted);margin-top:4px">ISLAMIC EDUCATIONAL CENTER</p>
+  </div>
+
+  <div class="hero-tasmiyya ar">﷽</div>
+  <div class="hero-tasmiyya en">SUMMER QUR'AN INTENSIVE</div>
+
+  <div class="hero-badge">
+    <span class="ar">يوليو — أغسطس · برنامج مكثف</span>
+    <span class="en">July — August · Intensive Program</span>
+  </div>
+
+  <h1 class="hero-title">
+    <span class="ar">المخيم القرآني<br><span class="g">الصيفي المكثف</span></span>
+    <span class="en">Summer Qur'an<br><span class="g">Intensive Camp</span></span>
+  </h1>
+
+  <p class="hero-sub ar">رحلة تحويلية مدتها شهران مع القرآن الكريم — حفظاً · تجويداً · فهماً · شخصيةً إسلامية راسخة</p>
+  <p class="hero-sub en">A transformational 2-month journey with the Qur'an — memorization, tajweed, understanding & Islamic character</p>
+
+  <div class="hdiv"></div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-n">١٠</span>
+      <span class="stat-l ar">ساعات يومياً</span>
+      <span class="stat-l en">Hours Daily</span>
+    </div>
+    <div class="sdiv"></div>
+    <div class="stat">
+      <span class="stat-n">٦</span>
+      <span class="stat-l ar">طلاب لكل معلم</span>
+      <span class="stat-l en">Students / Teacher</span>
+    </div>
+    <div class="sdiv"></div>
+    <div class="stat">
+      <span class="stat-n">٥</span>
+      <span class="stat-l ar">ساعات قرآن يومياً</span>
+      <span class="stat-l en">Qur'an Hours/Day</span>
+    </div>
+    <div class="sdiv"></div>
+    <div class="stat">
+      <span class="stat-n">$٤٠٠</span>
+      <span class="stat-l ar">بدلاً من $٥٠٠</span>
+      <span class="stat-l en">Was $500</span>
+    </div>
+  </div>
+
+  <button class="cta-p" onclick="goEnroll()">
+    <span class="ar">سجّل ابنك الآن — قبل امتلاء الأماكن</span>
+    <span class="en">Enroll Now — Before Spots Fill Up</span>
+  </button>
+
+  <p class="hero-note">
+    <span class="ar">✓ وجبات يومية &nbsp;|&nbsp; ✓ شهادة معتمدة &nbsp;|&nbsp; ✓ تقارير تقدم &nbsp;|&nbsp; <span>استرداد كامل قبل البدء</span></span>
+    <span class="en">✓ Daily meals &nbsp;|&nbsp; ✓ Official certificate &nbsp;|&nbsp; ✓ Progress reports &nbsp;|&nbsp; <span>Full refund before start</span></span>
+  </p>
+  <div class="gold-bar-b"></div>
+</div>
+
+<!-- ══ PAIN ══ -->
+<div class="sec-full">
+  <div class="inner">
+    <p class="slabel ar">هل تشعر بهذا؟</p>
+    <p class="slabel en">Does This Sound Familiar?</p>
+    <h2 class="stitle">
+      <span class="ar">يمضي الصيف وابنك بلا <span>هدف حقيقي</span></span>
+      <span class="en">Summer Passes Without <span>Real Growth</span></span>
+    </h2>
+    <div class="gl"></div>
+    <div class="pain-grid">
+      <div class="pain-card fi-el"><span class="pain-icon">📱</span>
+        <h3 class="ar">الوقت يُهدر على الشاشات</h3><h3 class="en">Screen Time Wasted</h3>
+        <p class="ar">ساعات طويلة أمام الهاتف والألعاب دون أي إنجاز حقيقي يبقى</p>
+        <p class="en">Long hours on phones and games with no lasting achievement</p>
+      </div>
+      <div class="pain-card fi-el"><span class="pain-icon">📖</span>
+        <h3 class="ar">علاقة ضعيفة بالقرآن</h3><h3 class="en">Weak Qur'anic Connection</h3>
+        <p class="ar">يمر الصيف ولم يُضف شيئاً لحفظه أو تلاوته وتجويده</p>
+        <p class="en">Summer ends without adding a single page to memorization</p>
+      </div>
+      <div class="pain-card fi-el"><span class="pain-icon">🕌</span>
+        <h3 class="ar">غياب التربية الإسلامية</h3><h3 class="en">Missing Islamic Foundation</h3>
+        <p class="ar">لا عقيدة راسخة، ولا فقه عملي، ولا أخلاق مؤسسة</p>
+        <p class="en">No solid aqeedah, practical fiqh, or grounded character</p>
+      </div>
+      <div class="pain-card fi-el"><span class="pain-icon">🎯</span>
+        <h3 class="ar">لا انضباط ولا هدف</h3><h3 class="en">No Discipline or Direction</h3>
+        <p class="ar">الصيف يمر بلا خطة ولا إنجاز ويبدأ العام الدراسي بنفس الفراغ</p>
+        <p class="en">Summer ends with the same emptiness it started with</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PROGRAM ══ -->
+<section class="sec">
+  <p class="slabel ar">ماذا سيدرس؟</p>
+  <p class="slabel en">What Will They Study?</p>
+  <h2 class="stitle">
+    <span class="ar">برنامج متكامل يبني <span>الإنسان كاملاً</span></span>
+    <span class="en">A Complete Program Building <span>Whole Character</span></span>
+  </h2>
+  <div class="gl"></div>
+  <div class="prog-grid">
+    <div class="prog-card fi-el">
+      <div class="prog-hrs ar">٥ ساعات يومياً</div><div class="prog-hrs en">5 Hours Daily</div>
+      <h3>📖 <span class="ar">القرآن الكريم</span><span class="en">Qur'an</span></h3>
+      <ul class="prog-list">
+        <li class="ar">حفظ من ٢ إلى ٢٠ صفحة (الحد الأدنى)</li>
+        <li class="en">2–20+ pages memorized (minimum guarantee)</li>
+        <li class="ar">تصحيح التلاوة والتجويد التطبيقي</li>
+        <li class="en">Recitation correction & applied tajweed</li>
+        <li class="ar">تقنيات المراجعة والحفظ الراسخ</li>
+        <li class="en">Structured revision & retention techniques</li>
+        <li class="ar">منهج حلية التلاوة والتجويد المصوّر</li>
+        <li class="en">Hilyat al-Tilawah & Al-Tajweed Al-Musawwar</li>
+      </ul>
+    </div>
+    <div class="prog-card fi-el">
+      <div class="prog-hrs ar">٣ ساعات يومياً</div><div class="prog-hrs en">3 Hours Daily</div>
+      <h3>🌍 <span class="ar">اللغة العربية</span><span class="en">Arabic Language</span></h3>
+      <ul class="prog-list">
+        <li class="ar">مستويات منهجية متدرجة حسب العمر</li>
+        <li class="en">Level-based progression by age</li>
+        <li class="ar">قواعد ومفردات وفهم</li>
+        <li class="en">Grammar, vocabulary & comprehension</li>
+        <li class="ar">مهارات الكلام والاستماع</li>
+        <li class="en">Speaking & listening practice</li>
+        <li class="ar">مدرسون عرب أصليون يتقنون الإنجليزية</li>
+        <li class="en">Native Arabic educators fluent in English</li>
+      </ul>
+    </div>
+    <div class="prog-card fi-el">
+      <div class="prog-hrs ar">٢ ساعة يومياً</div><div class="prog-hrs en">2 Hours Daily</div>
+      <h3>🕌 <span class="ar">العلوم الإسلامية</span><span class="en">Islamic Sciences</span></h3>
+      <ul class="prog-list">
+        <li class="ar">حفظ الحديث النبوي الشريف</li>
+        <li class="en">Hadith memorization (Sahih al-Bukhari)</li>
+        <li class="ar">العقيدة الإسلامية الصحيحة</li>
+        <li class="en">Aqeedah — Islamic creed</li>
+        <li class="ar">الفقه الحنبلي العملي</li>
+        <li class="en">Fiqh — practical jurisprudence</li>
+        <li class="ar">السيرة النبوية والأدب والتزكية</li>
+        <li class="en">Seerah, adab & tazkiyah</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VIDEO TESTIMONIAL ══ -->
+<div class="sec-full">
+  <div class="inner">
+    <p class="slabel ar">شاهد بنفسك</p>
+    <p class="slabel en">See It Yourself</p>
+    <h2 class="stitle">
+      <span class="ar">شهادة حية من <span>داخل المركز</span></span>
+      <span class="en">A Live Testimonial From <span>Inside the Center</span></span>
+    </h2>
+    <div class="gl"></div>
+    <div class="video-wrap fi-el">
+      <video controls poster="gallery-1.jpg">
+        <source src="promo-video.mp4" type="video/mp4">
+      </video>
+      <div class="video-overlay-badge ar">🎙️ شهادة طالبة — عالية القرآن</div>
+      <div class="video-overlay-badge en">🎙️ Student Testimonial — Aliyat Al-Quran</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CENTER GALLERY ══ -->
+<section class="sec">
+  <p class="slabel ar">من داخل المركز</p>
+  <p class="slabel en">Inside the Center</p>
+  <h2 class="stitle">
+    <span class="ar">بيئة تعليمية <span>راقية وملهمة</span></span>
+    <span class="en">A Premium <span>Learning Environment</span></span>
+  </h2>
+  <div class="gl"></div>
+  <div class="gallery-grid fi-el">
+    <div class="gal-img">
+      <img src="gallery-1.jpg" alt="صف دراسي">
+      <div class="gal-overlay"><span class="gal-cap ar">الصف الدراسي</span><span class="gal-cap en">Classroom</span></div>
+    </div>
+    <div class="gal-img">
+      <img src="gallery-2.jpg" alt="جلسة حفظ">
+      <div class="gal-overlay"><span class="gal-cap ar">جلسة الحفظ</span><span class="gal-cap en">Memorization Session</span></div>
+    </div>
+    <div class="gal-img">
+      <img src="gallery-3.jpg" alt="نشاط إسلامي">
+      <div class="gal-overlay"><span class="gal-cap ar">أنشطة المركز</span><span class="gal-cap en">Center Activities</span></div>
+    </div>
+    <div class="gal-img">
+      <img src="gallery-4.jpg" alt="جو المركز">
+      <div class="gal-overlay"><span class="gal-cap ar">البيئة الإسلامية</span><span class="gal-cap en">Islamic Environment</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GRADUATION CERTIFICATES ══ -->
+<div class="sec-full">
+  <div class="inner">
+    <p class="slabel ar">نتائج حقيقية</p>
+    <p class="slabel en">Real Results</p>
+    <h2 class="stitle">
+      <span class="ar">خرّيجونا يتحدثون <span>بإنجازاتهم</span></span>
+      <span class="en">Our Graduates <span>Speak Through Achievement</span></span>
+    </h2>
+    <div class="gl"></div>
+    <div class="certs-grid fi-el">
+      <div class="cert-card">
+        <div class="cert-img-wrap">
+          <img src="cert-1.jpg" alt="شهادة تخرج">
+          <div class="cert-ribbon ar">خرّيج متميز</div>
+          <div class="cert-ribbon en">Top Graduate</div>
+        </div>
+        <div class="cert-body">
+          <p class="ar">"الحمد لله أتممت حفظ جزء عم كاملاً وحصلت على إجازتي"</p>
+          <p class="en">"Alhamdulillah, I completed Juz' Amma and received my ijazah"</p>
+          <div class="cert-achieve">⭐ <span class="ar">جزء عم كاملاً</span><span class="en">Full Juz' Amma</span></div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-img-wrap">
+          <img src="cert-2.jpg" alt="شهادة تخرج">
+          <div class="cert-ribbon ar">إنجاز مميز</div>
+          <div class="cert-ribbon en">Outstanding</div>
+        </div>
+        <div class="cert-body">
+          <p class="ar">"في شهرين حفظت ١٥ صفحة وتعلمت أحكام التجويد الأساسية"</p>
+          <p class="en">"In 2 months I memorized 15 pages and learned core tajweed rules"</p>
+          <div class="cert-achieve">⭐ <span class="ar">١٥ صفحة محفوظة</span><span class="en">15 Pages Memorized</span></div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-img-wrap">
+          <img src="cert-3.jpg" alt="شهادة تخرج">
+          <div class="cert-ribbon ar">خرّيج ممتاز</div>
+          <div class="cert-ribbon en">Excellent Graduate</div>
+        </div>
+        <div class="cert-body">
+          <p class="ar">"تحسّن تلاوتي بشكل كبير وأصبحت أفهم بعض الآيات بالعربية"</p>
+          <p class="en">"My recitation improved greatly and I now understand Qur'anic Arabic"</p>
+          <div class="cert-achieve">⭐ <span class="ar">تلاوة معتمدة</span><span class="en">Certified Recitation</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ STUDENT TESTIMONIALS WITH PHOTO ══ -->
+<section class="sec">
+  <p class="slabel ar">آراء الطلاب وأولياء الأمور</p>
+  <p class="slabel en">Students & Parent Reviews</p>
+  <h2 class="stitle">
+    <span class="ar">ماذا يقول <span>أهلنا عنا</span></span>
+    <span class="en">What <span>Our Families Say</span></span>
+  </h2>
+  <div class="gl"></div>
+  <div class="testiph-grid fi-el">
+    <div class="testiph-card">
+      <div class="testiph-top">
+        <img class="testiph-img" src="cert-1.jpg" alt="طالب">
+        <div class="testiph-info">
+          <div class="testiph-name ar">أم محمد — ولية أمر</div>
+          <div class="testiph-name en">Umm Muhammad — Parent</div>
+          <div class="testiph-meta ar">طالب في الصف الابتدائي</div>
+          <div class="testiph-meta en">Elementary Level Student</div>
+        </div>
+      </div>
+      <div class="testiph-stars">★★★★★</div>
+      <p class="testiph-quote ar">ابني تغيّر تماماً هذا الصيف. كان لا يحفظ شيئاً وأصبح يحفظ جزء عم كاملاً ويُصلي بنفسه من دون أن نطلب منه.</p>
+      <p class="testiph-quote en">My son completely transformed this summer. He went from memorizing nothing to completing Juz' Amma and now prays on his own without being asked.</p>
+    </div>
+    <div class="testiph-card">
+      <div class="testiph-top">
+        <img class="testiph-img" src="cert-2.jpg" alt="طالبة">
+        <div class="testiph-info">
+          <div class="testiph-name ar">أبو سارة — ولي أمر</div>
+          <div class="testiph-name en">Abu Sara — Parent</div>
+          <div class="testiph-meta ar">طالبة في المرحلة المتوسطة</div>
+          <div class="testiph-meta en">Intermediate Level Student</div>
+        </div>
+      </div>
+      <div class="testiph-stars">★★★★★</div>
+      <p class="testiph-quote ar">المعلمون متميزون جداً وأسلوبهم يشجع الأطفال على الحفظ بشغف. ابنتي أصبحت تحب القرآن وتبكي عند سماعه.</p>
+      <p class="testiph-quote en">The teachers are exceptional. Their method inspires children to memorize with passion. My daughter now loves the Qur'an and cries when she hears it.</p>
+    </div>
+    <div class="testiph-card">
+      <div class="testiph-top">
+        <img class="testiph-img" src="cert-3.jpg" alt="طالب">
+        <div class="testiph-info">
+          <div class="testiph-name ar">أم يوسف — ولية أمر</div>
+          <div class="testiph-name en">Umm Yusuf — Parent</div>
+          <div class="testiph-meta ar">طالب في المرحلة الثانوية</div>
+          <div class="testiph-meta en">High School Level Student</div>
+        </div>
+      </div>
+      <div class="testiph-stars">★★★★★</div>
+      <p class="testiph-quote ar">أفضل استثمار في حياتنا. ولدي رجع من المخيم وهو إنسان مختلف تماماً في أخلاقه وعبادته ومحبته للدين.</p>
+      <p class="testiph-quote en">The best investment of our lives. My son returned from the camp a completely different person in his character, worship, and love for the religion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WRITTEN TESTIMONIALS (anonymous) ══ -->
+<div class="sec-full">
+  <div class="inner">
+    <p class="slabel ar">شهادات الخرّيجين</p>
+    <p class="slabel en">Graduate Testimonials</p>
+    <h2 class="stitle">
+      <span class="ar">كلمات تخرج <span>من القلب</span></span>
+      <span class="en">Words Straight <span>From the Heart</span></span>
+    </h2>
+    <div class="gl"></div>
+    <div class="wtesti-grid fi-el">
+      <div class="wtesti-card">
+        <div class="wtesti-q">"</div>
+        <p class="wtesti-text ar">لم أتوقع أن أحفظ بهذه السرعة. المنهج المنظم والمعلمون الرائعون جعلوا الصيف أفضل فترة في حياتي الدراسية.</p>
+        <p class="wtesti-text en">I never expected to memorize this fast. The structured curriculum and amazing teachers made this summer the best of my academic life.</p>
+        <div class="wtesti-stars">★★★★★</div>
+        <div class="wtesti-footer">
+          <div class="wtesti-avatar">🌟</div>
+          <div class="wtesti-who">
+            <div class="wtesti-anon ar">طالب — تفضّل بعدم ذكر اسمه</div>
+            <div class="wtesti-anon en">Student — Preferred Anonymity</div>
+            <div class="wtesti-role ar">حفظ ٢٠ صفحة خلال شهرين</div>
+            <div class="wtesti-role en">Memorized 20 pages in 2 months</div>
+          </div>
+        </div>
+      </div>
+      <div class="wtesti-card">
+        <div class="wtesti-q">"</div>
+        <p class="wtesti-text ar">كنت خائفاً في البداية لأنني مبتدئ، لكن المعلم تعامل معي بصبر وحكمة حتى أحببت القرآن وأصبح جزءاً من يومي.</p>
+        <p class="wtesti-text en">I was scared at first being a beginner, but my teacher was so patient and wise that I fell in love with the Qur'an and it became part of my daily life.</p>
+        <div class="wtesti-stars">★★★★★</div>
+        <div class="wtesti-footer">
+          <div class="wtesti-avatar">📖</div>
+          <div class="wtesti-who">
+            <div class="wtesti-anon ar">طالبة — تفضّلت بعدم ذكر الاسم</div>
+            <div class="wtesti-anon en">Student — Preferred Anonymity</div>
+            <div class="wtesti-role ar">مستوى مبتدئ — أتمت جزء تبارك</div>
+            <div class="wtesti-role en">Beginner level — completed Juz' Tabarak</div>
+          </div>
+        </div>
+      </div>
+      <div class="wtesti-card">
+        <div class="wtesti-q">"</div>
+        <p class="wtesti-text ar">والله هذا المخيم غيّر حياتي. تعلمت العربية وحفظت قرآناً وعدت للبيت بشخصية مختلفة وثقة بالنفس لم تكن عندي.</p>
+        <p class="wtesti-text en">This camp truly changed my life. I learned Arabic, memorized Qur'an, and came home with a different personality and confidence I never had before.</p>
+        <div class="wtesti-stars">★★★★★</div>
+        <div class="wtesti-footer">
+          <div class="wtesti-avatar">🕌</div>
+          <div class="wtesti-who">
+            <div class="wtesti-anon ar">طالب بالغ — تفضّل بعدم ذكر اسمه</div>
+            <div class="wtesti-anon en">Adult Student — Preferred Anonymity</div>
+            <div class="wtesti-role ar">متوسط — حفظ جزءاً ونصف</div>
+            <div class="wtesti-role en">Intermediate — memorized 1.5 ajza</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DAILY SCHEDULE ══ -->
+<section class="sec">
+  <p class="slabel ar">يوم نموذجي</p>
+  <p class="slabel en">A Typical Day</p>
+  <h2 class="stitle">
+    <span class="ar">١٠ ساعات من <span>البناء الحقيقي</span></span>
+    <span class="en">10 Hours of <span>Genuine Growth</span></span>
+  </h2>
+  <div class="gl"></div>
+  <div class="timeline fi-el">
+    <div class="tl-item">
+      <div class="tl-content" style="flex:1;padding-inline-end:18px">
+        <h4 class="ar">٨:٠٠ ص — افتتاح ودعاء</h4><h4 class="en">8:00 AM — Opening & Du'a</h4>
+        <p class="ar">بداية اليوم بتلاوة القرآن والأذكار وترتيب النية</p>
+        <p class="en">Starting with Qur'an recitation, adhkar & setting intentions</p>
+      </div>
+      <div class="tl-dot">١</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-content" style="flex:1;padding-inline-end:18px">
+        <h4 class="ar">٨:٣٠ ص — جلسة حفظ القرآن</h4><h4 class="en">8:30 AM — Qur'an Memorization</h4>
+        <p class="ar">حفظ آيات جديدة مع تصحيح التجويد في مجموعات صغيرة</p>
+        <p class="en">New memorization with tajweed correction in small groups</p>
+      </div>
+      <div class="tl-dot">٢</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-content" style="flex:1;padding-inline-end:18px">
+        <h4 class="ar">١٠:٣٠ ص — مراجعة وترسيخ</h4><h4 class="en">10:30 AM — Revision & Retention</h4>
+        <p class="ar">تثبيت الحفظ السابق ومراجعة منهجية مع المعلم</p>
+        <p class="en">Systematic review of previous memorization with teacher</p>
+      </div>
+      <div class="tl-dot">٣</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-content" style="flex:1;padding-inline-end:18px">
+        <h4 class="ar">١٢:٣٠ م — اللغة العربية</h4><h4 class="en">12:30 PM — Arabic Language</h4>
+        <p class="ar">جلسة تفاعلية في القواعد والمفردات والتواصل</p>
+        <p class="en">Interactive grammar, vocabulary & communication session</p>
+      </div>
+      <div class="tl-dot">٤</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-content" style="flex:1;padding-inline-end:18px">
+        <h4 class="ar">٢:٣٠ م — العلوم الإسلامية</h4><h4 class="en">2:30 PM — Islamic Sciences</h4>
+        <p class="ar">الحديث والعقيدة والفقه والسيرة والتزكية</p>
+        <p class="en">Hadith, aqeedah, fiqh, seerah & tazkiyah</p>
+      </div>
+      <div class="tl-dot">٥</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-content" style="flex:1;padding-inline-end:18px">
+        <h4 class="ar">٥:٠٠ م — مراجعة ختامية وتقييم</h4><h4 class="en">5:00 PM — Closing Review</h4>
+        <p class="ar">مراجعة إجمالية وتقييم يومي وتحضير اليوم التالي</p>
+        <p class="en">Daily evaluation, summary & preparation for tomorrow</p>
+      </div>
+      <div class="tl-dot">٦</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OUTCOMES ══ -->
+<div class="sec-full">
+  <div class="inner">
+    <p class="slabel ar">ماذا سيكتسب؟</p>
+    <p class="slabel en">What Will They Gain?</p>
+    <h2 class="stitle">
+      <span class="ar">نتائج <span>ملموسة ومضمونة</span></span>
+      <span class="en">Tangible, <span>Guaranteed Outcomes</span></span>
+    </h2>
+    <div class="gl"></div>
+    <div class="out-grid">
+      <div class="out-item fi-el"><div class="out-icon">📚</div><h4 class="ar">٢–٢٠ صفحة قرآن محفوظة على الأقل</h4><h4 class="en">2–20+ Qur'an pages memorized</h4></div>
+      <div class="out-item fi-el"><div class="out-icon">🗣️</div><h4 class="ar">تلاوة صحيحة بتجويد معتمد</h4><h4 class="en">Correct recitation with certified tajweed</h4></div>
+      <div class="out-item fi-el"><div class="out-icon">🌍</div><h4 class="ar">أساس راسخ في اللغة العربية</h4><h4 class="en">Solid Arabic language foundation</h4></div>
+      <div class="out-item fi-el"><div class="out-icon">🕌</div><h4 class="ar">معرفة إسلامية شاملة ومنهجية</h4><h4 class="en">Comprehensive Islamic knowledge</h4></div>
+      <div class="out-item fi-el"><div class="out-icon">💪</div><h4 class="ar">انضباط وتركيز وشخصية إسلامية</h4><h4 class="en">Discipline, focus & Islamic character</h4></div>
+      <div class="out-item fi-el"><div class="out-icon">📜</div><h4 class="ar">شهادة رسمية وتقارير تفصيلية</h4><h4 class="en">Official certificate & detailed reports</h4></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TEACHERS ══ -->
+<section class="sec">
+  <p class="slabel ar">من يُعلّم ابنك؟</p>
+  <p class="slabel en">Who Will Teach Them?</p>
+  <h2 class="stitle">
+    <span class="ar">معلمون <span>متخصصون ومؤهلون</span></span>
+    <span class="en">Qualified, <span>Specialist Educators</span></span>
+  </h2>
+  <div class="gl"></div>
+  <div class="teacher-row fi-el">
+    <div class="t-badge"><div class="t-check">✓</div><span class="ar">علماء وأكاديميون مؤهلون</span><span class="en">Qualified scholars & academics</span></div>
+    <div class="t-badge"><div class="t-check">✓</div><span class="ar">حاملو إجازة في القرآن والقراءات</span><span class="en">Ijazah holders in Qur'an & Qira'at</span></div>
+    <div class="t-badge"><div class="t-check">✓</div><span class="ar">مدرسون عرب أصليون بطلاقة إنجليزية</span><span class="en">Native Arabic speakers, fluent English</span></div>
+    <div class="t-badge"><div class="t-check">✓</div><span class="ar">خبرة مع جميع الأعمار والمستويات</span><span class="en">Experience with all ages & levels</span></div>
+    <div class="t-badge"><div class="t-check">✓</div><span class="ar">نسبة ١ معلم لكل ٦ طلاب فقط</span><span class="en">Only 1 teacher per 6 students</span></div>
+    <div class="t-badge"><div class="t-check">✓</div><span class="ar">إرشاد شخصي ومتابعة يومية</span><span class="en">Daily personal mentorship</span></div>
+  </div>
+</section>
+
+<!-- ══ PRICING ══ -->
+<div class="sec-full">
+  <div class="inner">
+    <p class="slabel ar">الاستثمار في المستقبل</p>
+    <p class="slabel en">Investment in the Future</p>
+    <h2 class="stitle">
+      <span class="ar">عرض خاص لفترة محدودة <span>وفّر ١٠٠$</span></span>
+      <span class="en">Limited-Time Offer — <span>Save $100</span></span>
+    </h2>
+    <div class="gl"></div>
+    <div class="price-card fi-el">
+      <div class="p-top-badge ar">🔥 عرض ينتهي قريباً — لا تفوّت الفرصة</div>
+      <div class="p-top-badge en">🔥 Offer ending soon — don't miss it</div>
+
+      <p style="color:var(--muted);font-size:13px;margin-top:18px" class="ar">البرنامج الكامل — شهران</p>
+      <p style="color:var(--muted);font-size:13px;margin-top:18px" class="en">Complete Program — Two Months</p>
+
+      <span class="price-old ar">السعر الأصلي: $٥٠٠</span>
+      <span class="price-old en">Original Price: $500</span>
+      <span class="price-save ar">وفّر $١٠٠</span>
+      <span class="price-save en">Save $100</span>
+
+      <div class="p-price">
+        <span class="p-currency">$</span><span class="p-amount">400</span>
+      </div>
+      <p class="p-period ar">دفعة واحدة · للبرنامج كاملاً (يوليو – أغسطس)</p>
+      <p class="p-period en">One payment · Full program (July – August)</p>
+
+      <ul class="p-list">
+        <li><div class="chk">✓</div><span class="ar">الدراسة ٦ أيام أسبوعياً (السبت–الخميس)</span><span class="en">6 days/week (Saturday–Thursday)</span></li>
+        <li><div class="chk">✓</div><span class="ar">١٠ ساعات تعليم يومي منظّم</span><span class="en">10 structured daily learning hours</span></li>
+        <li><div class="chk">✓</div><span class="ar">الوجبات اليومية مشمولة</span><span class="en">Daily meals included</span></li>
+        <li><div class="chk">✓</div><span class="ar">شهادة رسمية معتمدة عند الإتمام</span><span class="en">Official certificate upon completion</span></li>
+        <li><div class="chk">✓</div><span class="ar">تقارير تقدم منتصف وآخر الشهر</span><span class="en">Mid & end-of-month progress reports</span></li>
+        <li><div class="chk">✓</div><span class="ar">تقييمات دورية وتقييم نهائي شامل</span><span class="en">Regular assessments & final evaluation</span></li>
+        <li><div class="chk">✓</div><span class="ar">إرشاد شخصي ومرافقة يومية للمعلم</span><span class="en">Personal mentorship & daily guidance</span></li>
+      </ul>
+      <button class="cta-p" style="width:100%" onclick="goEnroll()">
+        <span class="ar">سجّل الآن واحجز مكانك بـ $٤٠٠</span>
+        <span class="en">Enroll Now — Lock in $400</span>
+      </button>
+      <p class="refund ar">🛡️ ضمان الاسترداد: استرداد كامل (ناقص ١٠٪) قبل البدء · ٥٠٪ بعد اليوم الأول</p>
+      <p class="refund en">🛡️ Refund guarantee: Full refund (minus 10%) before start · 50% after day one</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FAQ ══ -->
+<section class="sec">
+  <p class="slabel ar">أسئلة شائعة</p>
+  <p class="slabel en">Frequently Asked Questions</p>
+  <h2 class="stitle">
+    <span class="ar">إجابات على <span>استفساراتكم</span></span>
+    <span class="en">Answers to Your <span>Questions</span></span>
+  </h2>
+  <div class="gl"></div>
+  <div class="faq-list">
+    <div class="faq-item ar"><button class="faq-q" onclick="toggleFaq(this)"><span>من أي عمر يمكن الالتحاق بالبرنامج؟</span><span class="faq-icon">+</span></button><div class="faq-a">البرنامج مفتوح لجميع الأعمار والمستويات، من المبتدئين الكاملين إلى المتقدمين. يُجرى تقييم أولي لتحديد المجموعة المناسبة لكل طالب.</div></div>
+    <div class="faq-item en"><button class="faq-q" onclick="toggleFaq(this)"><span>What age groups can join?</span><span class="faq-icon">+</span></button><div class="faq-a">The program is open to all ages and levels, from complete beginners to advanced learners. An initial assessment places each student in the right group.</div></div>
+
+    <div class="faq-item ar"><button class="faq-q" onclick="toggleFaq(this)"><span>هل يناسب المبتدئين الذين لم يحفظوا شيئاً؟</span><span class="faq-icon">+</span></button><div class="faq-a">نعم تماماً. يُرحَّب بالمبتدئين بشدة. يبدأ كل طالب من مستواه الحالي ويتدرج وفق قدراته وجهده.</div></div>
+    <div class="faq-item en"><button class="faq-q" onclick="toggleFaq(this)"><span>Is it suitable for complete beginners?</span><span class="faq-icon">+</span></button><div class="faq-a">Absolutely. Beginners are very welcome. Each student starts from their current level and progresses according to their ability and effort.</div></div>
+
+    <div class="faq-item ar"><button class="faq-q" onclick="toggleFaq(this)"><span>هل التعليم باللغة العربية فقط؟</span><span class="faq-icon">+</span></button><div class="faq-a">لا. معلمونا عرب أصليون يتقنون الإنجليزية ويتواصلون بكلتا اللغتين حسب الحاجة.</div></div>
+    <div class="faq-item en"><button class="faq-q" onclick="toggleFaq(this)"><span>Is instruction only in Arabic?</span><span class="faq-icon">+</span></button><div class="faq-a">No. Our teachers are native Arabic speakers fluent in English. They communicate in both languages as needed for full comprehension.</div></div>
+
+    <div class="faq-item ar"><button class="faq-q" onclick="toggleFaq(this)"><span>كيف سأتابع تقدم ابني؟</span><span class="faq-icon">+</span></button><div class="faq-a">تقارير تفصيلية منتصف الشهر ونهايته + تقييم شامل نهاية البرنامج + شهادة رسمية معتمدة.</div></div>
+    <div class="faq-item en"><button class="faq-q" onclick="toggleFaq(this)"><span>How will I track my child's progress?</span><span class="faq-icon">+</span></button><div class="faq-a">Detailed progress reports mid-month and end-of-month, plus a comprehensive final evaluation and official completion certificate.</div></div>
+
+    <div class="faq-item ar"><button class="faq-q" onclick="toggleFaq(this)"><span>هل السعر $٤٠٠ شامل الوجبات؟</span><span class="faq-icon">+</span></button><div class="faq-a">نعم، السعر $٤٠٠ (بدلاً من $٥٠٠) يشمل كامل البرنامج التعليمي لمدة شهرين، الوجبات اليومية، الأنشطة، التقارير، والشهادة الرسمية.</div></div>
+    <div class="faq-item en"><button class="faq-q" onclick="toggleFaq(this)"><span>Does the $400 include meals?</span><span class="faq-icon">+</span></button><div class="faq-a">Yes, the $400 price (down from $500) covers the full 2-month educational program, daily meals, activities, progress reports, and the official certificate.</div></div>
+  </div>
+</section>
+
+<!-- ══ ENROLLMENT FORM ══ -->
+<div class="form-sec" id="enroll">
+  <p class="slabel ar">التسجيل</p>
+  <p class="slabel en">Enrollment</p>
+  <h2 class="stitle">
+    <span class="ar">احجز مكانك <span>الآن</span></span>
+    <span class="en">Reserve Your <span>Spot Now</span></span>
+  </h2>
+  <p style="text-align:center;color:var(--muted);font-size:13px;margin-bottom:36px" class="ar">تبقّى ٢٠ مقعداً فقط · لا تترك مكانك يُشغل</p>
+  <p style="text-align:center;color:var(--muted);font-size:13px;margin-bottom:36px" class="en">Only 20 seats left · Don't let your spot be taken</p>
+
+  <div class="form-wrap fi-el">
+    <div class="form-notice">
+      <span class="ar">🏆 البرنامج يبدأ <strong>يوليو ٢٠٢٥</strong> — والعرض $٤٠٠ لفترة محدودة فقط</span>
+      <span class="en">🏆 Program starts <strong>July 2025</strong> — the $400 offer is for a limited time only</span>
+    </div>
+
+    <form id="regForm" onsubmit="submitForm(event)">
+      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY_HERE">
+      <input type="hidden" name="subject" id="form-subject" value="تسجيل جديد — المخيم القرآني الصيفي عالية القرآن">
+      <input type="hidden" name="from_name" value="عالية القرآن | Aliyat Al-Quran">
+
+      <div class="form-row">
+        <div class="fg">
+          <label class="fl ar">اسم ولي الأمر</label>
+          <label class="fl en">Parent / Guardian Name</label>
+          <input type="text" name="parent_name" class="inp" required id="ph-parent">
+        </div>
+        <div class="fg">
+          <label class="fl ar">اسم الطالب</label>
+          <label class="fl en">Student Name</label>
+          <input type="text" name="student_name" class="inp" required id="ph-student">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="fg">
+          <label class="fl ar">رقم الواتساب</label>
+          <label class="fl en">WhatsApp Number</label>
+          <input type="tel" name="phone" class="inp" dir="ltr" required placeholder="+1 XXX XXX XXXX">
+        </div>
+        <div class="fg">
+          <label class="fl ar">البريد الإلكتروني</label>
+          <label class="fl en">Email Address</label>
+          <input type="email" name="email" class="inp" dir="ltr" required placeholder="example@email.com">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="fg">
+          <!-- Arabic select -->
+          <label class="fl ar">الفئة العمرية</label>
+          <select name="age_group" class="inp ar" required id="sel-age-ar">
+            <option value="" disabled selected>اختر الفئة العمرية</option>
+            <option value="7-10">٧ – ١٠ سنوات</option>
+            <option value="11-14">١١ – ١٤ سنة</option>
+            <option value="15-18">١٥ – ١٨ سنة</option>
+            <option value="18+">١٨+ (بالغ)</option>
+          </select>
+          <!-- English select -->
+          <label class="fl en">Student Age Group</label>
+          <select name="age_group_en" class="inp en" id="sel-age-en">
+            <option value="" disabled selected>Select age group</option>
+            <option value="7-10">7 – 10 years</option>
+            <option value="11-14">11 – 14 years</option>
+            <option value="15-18">15 – 18 years</option>
+            <option value="18+">18+ (Adult)</option>
+          </select>
+        </div>
+        <div class="fg">
+          <!-- Arabic select -->
+          <label class="fl ar">المستوى في القرآن</label>
+          <select name="quran_level" class="inp ar" required id="sel-lvl-ar">
+            <option value="" disabled selected>اختر المستوى</option>
+            <option value="beginner">مبتدئ (لم يحفظ بعد)</option>
+            <option value="some">حفظ بعض السور القصيرة</option>
+            <option value="1juz">حفظ جزءاً أو أكثر</option>
+            <option value="5juz">حفظ ٥ أجزاء فأكثر</option>
+          </select>
+          <!-- English select -->
+          <label class="fl en">Current Qur'an Level</label>
+          <select name="quran_level_en" class="inp en" id="sel-lvl-en">
+            <option value="" disabled selected>Select level</option>
+            <option value="beginner">Beginner (no memorization yet)</option>
+            <option value="some">Some short surahs memorized</option>
+            <option value="1juz">1+ juz memorized</option>
+            <option value="5juz">5+ ajza memorized</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg">
+        <label class="fl ar">ملاحظات إضافية (اختياري)</label>
+        <label class="fl en">Additional Notes (optional)</label>
+        <textarea name="notes" class="inp" rows="3" style="resize:vertical" id="ph-notes"></textarea>
+      </div>
+
+      <button type="submit" class="cta-p submit-btn" id="submitBtn">
+        <span class="ar">أرسل طلب التسجيل — مجاناً وبلا التزام</span>
+        <span class="en">Submit Enrollment Request — Free, No Obligation</span>
+      </button>
+    </form>
+
+    <div class="success-msg" id="successMsg">
+      <h3 class="ar">جزاك الله خيراً! 🌟</h3>
+      <h3 class="en">Thank You! 🌟</h3>
+      <p class="ar">تم استلام طلبك بنجاح. سيتواصل معك فريق عالية القرآن خلال ٢٤ ساعة لتأكيد مكانك.</p>
+      <p class="en">Your registration has been received. The Aliyat Al-Quran team will contact you within 24 hours to confirm your spot.</p>
+    </div>
+    <p class="form-fn ar">سيتواصل معك فريقنا خلال ٢٤ ساعة · معلوماتك آمنة وسرية تماماً</p>
+    <p class="form-fn en">Our team will contact you within 24 hours · Your information is completely safe</p>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-name ar">عالية القرآن</div>
+  <div class="footer-name en">Aliyat Al‑Quran</div>
+  <p class="ar">مركز تعليمي إسلامي متكامل</p>
+  <p class="en">Islamic Educational Center</p>
+  <div class="f-div"></div>
+  <p class="ar">استثمر صيفاً يحول العلم إلى أخلاق، والتعلم إلى أثر يبقى للأبد</p>
+  <p class="en">Invest in a summer that transforms knowledge into character, and learning into lifelong impact</p>
+  <p style="margin-top:14px;font-size:11px;letter-spacing:1px" class="ar">يوليو – أغسطس · السبت إلى الخميس · ٨:٠٠ ص – ٦:٠٠ م</p>
+  <p style="margin-top:14px;font-size:11px;letter-spacing:1px" class="en">July – August · Saturday to Thursday · 8:00 AM – 6:00 PM</p>
+</footer>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <button class="sticky-btn" onclick="goEnroll()">
+    <span class="ar">🌟 سجّل الآن — ٢٠ مقعداً فقط</span>
+    <span class="en">🌟 Enroll Now — Only 20 Seats</span>
+  </button>
+</div>
+
+<script>
+// ══ LANGUAGE ══
+var currentLang = 'ar';
+
+function detectLang(){
+  var langs = navigator.languages || [navigator.language || 'ar'];
+  for(var i=0;i<langs.length;i++){
+    var l = langs[i].toLowerCase();
+    if(l.startsWith('ar')) return 'ar';
+    if(l.startsWith('en')) return 'en';
+  }
+  return 'ar';
+}
+
+function setLang(lang){
+  currentLang = lang;
+  var body = document.body;
+  if(lang === 'en'){
+    body.classList.remove('rtl'); body.classList.add('ltr');
+    body.setAttribute('dir','ltr'); body.setAttribute('lang','en');
+    document.getElementById('btn-en').classList.add('active');
+    document.getElementById('btn-ar').classList.remove('active');
+    document.getElementById('form-subject').value = 'New Registration — Summer Quran Intensive Camp';
+    document.getElementById('ph-notes').placeholder = 'Any special needs or questions...';
+    document.getElementById('ph-parent').placeholder = 'Full name';
+    document.getElementById('ph-student').placeholder = 'Student full name';
+    // swap required on selects
+    document.getElementById('sel-age-ar').required = false;
+    document.getElementById('sel-age-en').required = true;
+    document.getElementById('sel-lvl-ar').required = false;
+    document.getElementById('sel-lvl-en').required = true;
+  } else {
+    body.classList.remove('ltr'); body.classList.add('rtl');
+    body.setAttribute('dir','rtl'); body.setAttribute('lang','ar');
+    document.getElementById('btn-ar').classList.add('active');
+    document.getElementById('btn-en').classList.remove('active');
+    document.getElementById('form-subject').value = 'تسجيل جديد — المخيم القرآني الصيفي عالية القرآن';
+    document.getElementById('ph-notes').placeholder = 'أي احتياجات خاصة أو استفسارات...';
+    document.getElementById('ph-parent').placeholder = 'الاسم الكامل';
+    document.getElementById('ph-student').placeholder = 'اسم الطالب كاملاً';
+    document.getElementById('sel-age-ar').required = true;
+    document.getElementById('sel-age-en').required = false;
+    document.getElementById('sel-lvl-ar').required = true;
+    document.getElementById('sel-lvl-en').required = false;
+  }
+  localStorage.setItem('aliyat_lang', lang);
+}
+
+(function(){
+  var saved = localStorage.getItem('aliyat_lang');
+  setLang(saved || detectLang());
+})();
+
+// ══ COUNTDOWN (3 days from page load) ══
+var deadline = new Date();
+deadline.setDate(deadline.getDate() + 3);
+function tickCountdown(){
+  var now = new Date();
+  var diff = Math.max(0, deadline - now);
+  var d = Math.floor(diff/86400000);
+  var h = Math.floor((diff%86400000)/3600000);
+  var m = Math.floor((diff%3600000)/60000);
+  var s = Math.floor((diff%60000)/1000);
+  document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+}
+tickCountdown();
+setInterval(tickCountdown, 1000);
+
+// ══ FORM SUBMIT ══
+async function submitForm(e){
+  e.preventDefault();
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true; btn.style.opacity = '.7';
+  var form = document.getElementById('regForm');
+  var data = new FormData(form);
+
+  // sync whichever select is visible into a unified field
+  var ageVal = currentLang==='ar'
+    ? document.getElementById('sel-age-ar').value
+    : document.getElementById('sel-age-en').value;
+  var lvlVal = currentLang==='ar'
+    ? document.getElementById('sel-lvl-ar').value
+    : document.getElementById('sel-lvl-en').value;
+  data.set('age_group', ageVal);
+  data.set('quran_level', lvlVal);
+  data.delete('age_group_en');
+  data.delete('quran_level_en');
+
+  try{ await fetch('https://api.web3forms.com/submit',{method:'POST',body:data}); }catch(e){}
+
+  var sheetUrl='YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+  var obj={}; data.forEach(function(v,k){obj[k]=v;});
+  obj.timestamp=new Date().toLocaleString(); obj.language=currentLang;
+  try{ await fetch(sheetUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(obj)}); }catch(e){}
+
+  form.style.display='none';
+  document.getElementById('successMsg').style.display='block';
+  document.getElementById('successMsg').scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+// ══ FAQ ══
+function toggleFaq(btn){
+  var item=btn.closest('.faq-item');
+  var was=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(el){el.classList.remove('open');});
+  if(!was) item.classList.add('open');
+}
+
+// ══ SCROLL ══
+function goEnroll(){ document.getElementById('enroll').scrollIntoView({behavior:'smooth'}); }
+
+// ══ STICKY CTA ══
+var sc=document.getElementById('stickyCta');
+window.addEventListener('scroll',function(){ sc.classList.toggle('vis',window.scrollY>400); });
+
+// ══ FADE IN ══
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);} });
+},{threshold:0.08});
+document.querySelectorAll('.fi-el').forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
