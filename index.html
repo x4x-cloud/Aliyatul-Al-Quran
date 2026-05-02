@@ -37,7 +37,21 @@ body.ltr .ar-i{display:none!important}body.ltr .en-i{display:inline}
 .urgency strong{font-weight:900;text-decoration:underline}
 
 /* ── LANG BAR ── */
-.lang-bar{position:sticky;top:0;z-index:999;display:flex;justify-content:flex-end;align-items:center;padding:8px 20px;background:rgba(7,6,0,.98);border-bottom:1px solid var(--border-g);gap:8px;backdrop-filter:blur(12px)}
+.lang-bar{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:9999;
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  padding:8px 20px;
+  background:rgba(7,6,0,.98);
+  border-bottom:1px solid var(--border-g);
+  gap:8px;
+  backdrop-filter:blur(12px);
+}
 .lang-btn{background:transparent;border:1px solid var(--border-g);border-radius:100px;padding:5px 20px;font-size:12px;font-weight:600;cursor:pointer;letter-spacing:1px;color:var(--beige);transition:all .3s;font-family:inherit}
 .lang-btn.active{background:linear-gradient(135deg,var(--gold-l),var(--gold));color:#050400;border-color:var(--gold)}
 .lang-btn:hover:not(.active){border-color:var(--gold);color:var(--gold)}
