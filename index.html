@@ -840,7 +840,7 @@ async function submitForm(e){
   data.set('age_group',ageVal);data.set('quran_level',lvlVal);
   data.delete('age_group_en');data.delete('quran_level_en');
   try{await fetch('https://api.web3forms.com/submit',{method:'POST',body:data});}catch(e){}
-  var sheetUrl='YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+  var sheetUrl='https://script.google.com/macros/s/AKfycbxdJKBE4S0LhFPxqXjOVx__X3InJ3C4hur7dH4jH8xK0TJWnR6UJo0OBoPJ_CeBoft63Q/exec';
   var obj={};data.forEach(function(v,k){obj[k]=v;});
   obj.timestamp=new Date().toLocaleString();obj.language=currentLang;
   try{await fetch(sheetUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(obj)});}catch(e){}
